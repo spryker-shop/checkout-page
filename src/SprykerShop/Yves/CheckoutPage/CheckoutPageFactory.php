@@ -8,6 +8,7 @@
 namespace SprykerShop\Yves\CheckoutPage;
 
 use Spryker\Yves\Kernel\AbstractFactory;
+use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface;
@@ -15,11 +16,18 @@ use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleC
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToUtilEncodingServiceInterface;
+use SprykerShop\Yves\CheckoutPage\Form\DataProvider\ExternalPaymentFormDataProvider;
 use SprykerShop\Yves\CheckoutPage\Form\DataProvider\ShipmentFormDataProvider;
+use SprykerShop\Yves\CheckoutPage\Form\ExternalPaymentSubForm;
 use SprykerShop\Yves\CheckoutPage\Form\Filter\SubFormFilter;
 use SprykerShop\Yves\CheckoutPage\Form\Filter\SubFormFilterInterface;
 use SprykerShop\Yves\CheckoutPage\Form\FormFactory;
+use SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractExternalPaymentSubFormType;
+use SprykerShop\Yves\CheckoutPage\Plugin\StepEngine\AbstractExternalPaymentSubFormPlugin;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory;
+use SprykerShop\Yves\CheckoutPage\Reader\PaymentMethodReader;
+use SprykerShop\Yves\CheckoutPage\Reader\PaymentMethodReaderInterface;
 
 /**
  * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig getConfig()
@@ -50,6 +58,34 @@ class CheckoutPageFactory extends AbstractFactory
     public function createCheckoutFormFactory()
     {
         return new FormFactory();
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Reader\PaymentMethodReaderInterface
+     */
+    public function createPaymentMethodReader(): PaymentMethodReaderInterface
+    {
+        return new PaymentMethodReader(
+            $this->getPaymentClient(),
+            $this->getQuoteClient(),
+            $this->getUtilEncodingService()
+        );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractExternalPaymentSubFormType
+     */
+    public function createExternalPaymentSubForm(): AbstractExternalPaymentSubFormType
+    {
+        return new ExternalPaymentSubForm();
+    }
+
+    /**
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
+     */
+    public function createExternalPaymentFormDataProvider(): StepEngineFormDataProviderInterface
+    {
+        return new ExternalPaymentFormDataProvider();
     }
 
     /**
@@ -173,6 +209,30 @@ class CheckoutPageFactory extends AbstractFactory
             $this->getSubFormFilterPlugins(),
             $this->getQuoteClient()
         );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToUtilEncodingServiceInterface
+     */
+    public function getUtilEncodingService(): CheckoutPageToUtilEncodingServiceInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_UTIL_ENCODING);
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\PaymentCollectionExtenderPluginInterface[]
+     */
+    public function getPaymentCollectionExtenderPlugins(): array
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGINS_PAYMENT_COLLECTION_EXTENDER);
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Plugin\StepEngine\AbstractExternalPaymentSubFormPlugin
+     */
+    public function getExternalPaymentSubFormPlugin(): AbstractExternalPaymentSubFormPlugin
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_EXTERNAL_PAYMENT_SUB_FORM);
     }
 
     /**

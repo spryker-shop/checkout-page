@@ -99,12 +99,13 @@ class PaymentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
             return $quoteTransfer;
         }
         $paymentSelection = $this->getPaymentSelectionWithFallback($quoteTransfer);
+        $paymentSelectionKey = $this->getPaymentSelectionKey($paymentSelection);
 
-        if ($paymentSelection === null || !$this->paymentPlugins->has($paymentSelection)) {
+        if ($paymentSelection === null || !$this->paymentPlugins->has($paymentSelectionKey)) {
             return $quoteTransfer;
         }
 
-        $paymentHandler = $this->paymentPlugins->get($paymentSelection);
+        $paymentHandler = $this->paymentPlugins->get($paymentSelectionKey);
         if ($paymentHandler instanceof StepHandlerPluginWithMessengerInterface) {
             $paymentHandler->setFlashMessenger($this->flashMessenger);
         }
@@ -112,6 +113,22 @@ class PaymentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         $quoteTransfer = $this->calculationClient->recalculate($quoteTransfer);
 
         return $quoteTransfer;
+    }
+
+    /**
+     * @param string $paymentSelection
+     *
+     * @return string
+     */
+    protected function getPaymentSelectionKey(string $paymentSelection): string
+    {
+        preg_match('/^([\w]+)/', $paymentSelection, $matches);
+
+        if (!isset($matches[0])) {
+            return $paymentSelection;
+        }
+
+        return $matches[0];
     }
 
     /**
