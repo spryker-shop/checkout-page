@@ -12,7 +12,7 @@ use Spryker\Yves\Kernel\AbstractPlugin;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class ExternalPaymentsHandlerPlugin extends AbstractPlugin implements StepHandlerPluginInterface
+class PaymentExternalHandlerPlugin extends AbstractPlugin implements StepHandlerPluginInterface
 {
     /**
      * @uses \SprykerShop\Yves\CheckoutPage\Form\PaymentExternalSubForm::FIELD_PAYMENT_METHOD_NAME
