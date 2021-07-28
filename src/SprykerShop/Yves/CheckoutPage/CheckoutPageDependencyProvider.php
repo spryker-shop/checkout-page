@@ -31,12 +31,11 @@ use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClient
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceBridge;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceBridge;
-use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToUtilEncodingServiceBridge;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToUtilValidateServiceBridge;
 use SprykerShop\Yves\CheckoutPage\Plugin\CheckoutBreadcrumbPlugin;
 use SprykerShop\Yves\CheckoutPage\Plugin\ShipmentFormDataProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Plugin\ShipmentHandlerPlugin;
-use SprykerShop\Yves\CheckoutPage\Plugin\StepEngine\ExternalPaymentSubFormPlugin;
+use SprykerShop\Yves\CheckoutPage\Plugin\StepEngine\PaymentExternalSubFormPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CheckoutAddressFormDataProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
 use SprykerShop\Yves\MoneyWidget\Plugin\MoneyPlugin;
@@ -58,7 +57,6 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
     public const STORE = 'STORE';
 
     public const SERVICE_UTIL_VALIDATE = 'SERVICE_UTIL_VALIDATE';
-    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
     public const SERVICE_SHIPMENT = 'SERVICE_SHIPMENT';
     public const SERVICE_CUSTOMER = 'SERVICE_CUSTOMER';
 
@@ -133,7 +131,6 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addApplication($container);
         $container = $this->provideStore($container);
         $container = $this->addUtilValidateService($container);
-        $container = $this->addUtilEncodingService($container);
 
         $container = $this->addSubFormPluginCollection($container);
         $container = $this->addPaymentMethodHandlerPluginCollection($container);
@@ -164,7 +161,7 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addCheckoutPageStepEnginePreRenderPlugins($container);
 
         $container = $this->addPaymentCollectionExtenderPlugins($container);
-        $container = $this->addExternalPaymentSubFormPlugin($container);
+        $container = $this->addPaymentExternalSubFormPlugin($container);
 
         return $container;
     }
@@ -178,22 +175,6 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::SERVICE_UTIL_VALIDATE, function (Container $container) {
             return new CheckoutPageToUtilValidateServiceBridge($container->getLocator()->utilValidate()->service());
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    protected function addUtilEncodingService(Container $container): Container
-    {
-        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
-            return new CheckoutPageToUtilEncodingServiceBridge(
-                $container->getLocator()->utilEncoding()->service()
-            );
         });
 
         return $container;
@@ -945,10 +926,10 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addExternalPaymentSubFormPlugin(Container $container): Container
+    protected function addPaymentExternalSubFormPlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_EXTERNAL_PAYMENT_SUB_FORM, $container->factory(function () {
-            return new ExternalPaymentSubFormPlugin();
+            return new PaymentExternalSubFormPlugin();
         }));
 
         return $container;

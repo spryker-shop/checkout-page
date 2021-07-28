@@ -16,7 +16,7 @@ use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\PaymentCollectionEx
 /**
  * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageFactory getFactory()
  */
-class ExternalPaymentCollectionExtenderPlugin extends AbstractPlugin implements PaymentCollectionExtenderPluginInterface
+class PaymentExternalPaymentCollectionExtenderPlugin extends AbstractPlugin implements PaymentCollectionExtenderPluginInterface
 {
     /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection $paymentSubFormPluginCollection
@@ -33,7 +33,10 @@ class ExternalPaymentCollectionExtenderPlugin extends AbstractPlugin implements 
                 continue;
             }
 
-            $this->addExternalPaymentMethod($paymentSubFormPluginCollection, $paymentMethodTransfer);
+            $paymentSubFormPluginCollection = $this->addPaymentExternalMethod(
+                $paymentSubFormPluginCollection,
+                $paymentMethodTransfer
+            );
         }
 
         return $paymentSubFormPluginCollection;
@@ -45,13 +48,13 @@ class ExternalPaymentCollectionExtenderPlugin extends AbstractPlugin implements 
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection
      */
-    protected function addExternalPaymentMethod(
+    protected function addPaymentExternalMethod(
         SubFormPluginCollection $paymentSubFormPluginCollection,
         PaymentMethodTransfer $paymentMethodTransfer
     ): SubFormPluginCollection {
-        $externalPaymentSubFormPlugin = $this->getFactory()->getExternalPaymentSubFormPlugin()
+        $PaymentExternalSubFormPlugin = $this->getFactory()->getPaymentExternalSubFormPlugin()
             ->setPaymentMethodTransfer($paymentMethodTransfer);
 
-        return $paymentSubFormPluginCollection->add($externalPaymentSubFormPlugin);
+        return $paymentSubFormPluginCollection->add($PaymentExternalSubFormPlugin);
     }
 }

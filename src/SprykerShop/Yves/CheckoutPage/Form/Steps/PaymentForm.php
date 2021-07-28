@@ -15,7 +15,7 @@ use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginInterface;
-use SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractExternalPaymentSubFormType;
+use SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractPaymentExternalSubFormType;
 use SprykerShop\Yves\CheckoutPage\Form\StepEngine\StandaloneSubFormInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -161,7 +161,7 @@ class PaymentForm extends AbstractType
             'label' => false,
         ];
 
-        if (!$paymentMethodSubForm instanceof AbstractExternalPaymentSubFormType) {
+        if (!$paymentMethodSubForm instanceof AbstractPaymentExternalSubFormType) {
             return $defaultOptions;
         }
 

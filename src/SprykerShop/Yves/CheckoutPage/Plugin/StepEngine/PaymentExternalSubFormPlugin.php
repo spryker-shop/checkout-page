@@ -13,14 +13,14 @@ use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 /**
  * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageFactory getFactory()
  */
-class ExternalPaymentSubFormPlugin extends AbstractExternalPaymentSubFormPlugin
+class PaymentExternalSubFormPlugin extends AbstractPaymentExternalSubFormPlugin
 {
     /**
      * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
     public function createSubForm(): SubFormInterface
     {
-        return $this->getFactory()->createExternalPaymentSubForm()
+        return $this->getFactory()->createPaymentExternalSubForm()
             ->setPaymentMethodTransfer($this->paymentMethodTransfer);
     }
 
@@ -29,6 +29,6 @@ class ExternalPaymentSubFormPlugin extends AbstractExternalPaymentSubFormPlugin
      */
     public function createSubFormDataProvider(): StepEngineFormDataProviderInterface
     {
-        return $this->getFactory()->createExternalPaymentFormDataProvider();
+        return $this->getFactory()->createPaymentExternalFormDataProvider();
     }
 }

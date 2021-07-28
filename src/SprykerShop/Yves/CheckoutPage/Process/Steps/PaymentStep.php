@@ -116,6 +116,10 @@ class PaymentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
     }
 
     /**
+     * Returns only the first matching string for the pattern `[a-zA-Z0-9_]+`.
+     *
+     * @example 'externalPayments[paymentKey]' becomes 'externalPayments'
+     *
      * @param string $paymentSelection
      *
      * @return string

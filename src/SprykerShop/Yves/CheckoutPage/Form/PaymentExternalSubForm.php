@@ -9,26 +9,24 @@ namespace SprykerShop\Yves\CheckoutPage\Form;
 
 use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
-use SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractExternalPaymentSubFormType;
+use SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractPaymentExternalSubFormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ExternalPaymentSubForm extends AbstractExternalPaymentSubFormType
+class PaymentExternalSubForm extends AbstractPaymentExternalSubFormType
 {
     protected const FIELD_PAYMENT_METHOD_NAME = 'paymentMethodName';
     protected const FIELD_PAYMENT_PROVIDER_NAME = 'paymentProviderName';
-
-    protected const EXTRA_DATA_KEY_LABEL_NAME = 'labelName';
 
     /**
      * @return string
      */
     public function getLabelName(): string
     {
-        return $this->paymentMethodTransfer->getExtraDataRaw()[static::EXTRA_DATA_KEY_LABEL_NAME];
+        return $this->paymentMethodTransfer->getLabelName();
     }
 
     /**
@@ -36,7 +34,7 @@ class ExternalPaymentSubForm extends AbstractExternalPaymentSubFormType
      */
     public function getGroupName(): string
     {
-        return $this->paymentMethodTransfer->getExtraDataRaw()['groupName'];
+        return $this->paymentMethodTransfer->getGroupName();
     }
 
     /**
@@ -101,7 +99,7 @@ class ExternalPaymentSubForm extends AbstractExternalPaymentSubFormType
         $paymentMethodTransfer = $options[static::OPTION_PAYMENT_METHOD_TRANSFER];
 
         $builder->add(static::FIELD_PAYMENT_METHOD_NAME, HiddenType::class, [
-            'data' => $paymentMethodTransfer->getExtraDataRaw()[static::EXTRA_DATA_KEY_LABEL_NAME],
+            'data' => $paymentMethodTransfer->getLabelName(),
         ]);
         $builder->add(static::FIELD_PAYMENT_PROVIDER_NAME, HiddenType::class, [
             'data' => $paymentMethodTransfer->getPaymentProvider()->getPaymentProviderKey(),

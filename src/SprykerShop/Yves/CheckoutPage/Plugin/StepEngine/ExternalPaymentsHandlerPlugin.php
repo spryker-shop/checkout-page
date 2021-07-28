@@ -15,12 +15,12 @@ use Symfony\Component\HttpFoundation\Request;
 class ExternalPaymentsHandlerPlugin extends AbstractPlugin implements StepHandlerPluginInterface
 {
     /**
-     * @uses \SprykerShop\Yves\CheckoutPage\Form\ExternalPaymentSubForm::FIELD_PAYMENT_METHOD_NAME
+     * @uses \SprykerShop\Yves\CheckoutPage\Form\PaymentExternalSubForm::FIELD_PAYMENT_METHOD_NAME
      */
     protected const FIELD_PAYMENT_METHOD_NAME = 'paymentMethodName';
 
     /**
-     * @uses \SprykerShop\Yves\CheckoutPage\Form\ExternalPaymentSubForm::FIELD_PAYMENT_PROVIDER_NAME
+     * @uses \SprykerShop\Yves\CheckoutPage\Form\PaymentExternalSubForm::FIELD_PAYMENT_PROVIDER_NAME
      */
     protected const FIELD_PAYMENT_PROVIDER_NAME = 'paymentProviderName';
 
@@ -44,13 +44,18 @@ class ExternalPaymentsHandlerPlugin extends AbstractPlugin implements StepHandle
     }
 
     /**
+     * Returns only the first matching string for the provided pattern in square brackets.
+     * Returns the specified value if there is no match.
+     *
+     * @example 'externalPayments[paymentKey]' becomes 'paymentKey'
+     *
      * @param string $paymentSelection
      *
      * @return string
      */
     protected function getPaymentMethodKey(string $paymentSelection): string
     {
-        preg_match('/\[([\w]+)\]/', $paymentSelection, $matches);
+        preg_match('/\[([a-zA-Z0-9_-]+)\]/', $paymentSelection, $matches);
 
         if (!isset($matches[1])) {
             return $paymentSelection;

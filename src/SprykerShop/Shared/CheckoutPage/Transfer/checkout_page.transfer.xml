@@ -97,8 +97,8 @@
         <property name="methodName" type="string"/>
         <property name="isExternal" type="bool"/>
         <property name="paymentMethodKey" type="string" strict="true"/>
-        <property name="extraData" type="string"/>
-        <property name="extraDataRaw" type="array" associative="true" singular="extraValue"/>
+        <property name="labelName" type="string"/>
+        <property name="groupName" type="string"/>
     </transfer>
 
     <transfer name="SaveOrder">

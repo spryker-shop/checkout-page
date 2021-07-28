@@ -10,7 +10,7 @@ namespace SprykerShop\Yves\CheckoutPage\Form\DataProvider;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 
-class ExternalPaymentFormDataProvider implements StepEngineFormDataProviderInterface
+class PaymentExternalFormDataProvider implements StepEngineFormDataProviderInterface
 {
     /**
      * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer|\Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

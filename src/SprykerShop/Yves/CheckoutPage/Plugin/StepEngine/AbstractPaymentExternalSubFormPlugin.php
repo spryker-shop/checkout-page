@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Spryker\Yves\Kernel\AbstractPlugin;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginInterface;
 
-abstract class AbstractExternalPaymentSubFormPlugin extends AbstractPlugin implements SubFormPluginInterface
+abstract class AbstractPaymentExternalSubFormPlugin extends AbstractPlugin implements SubFormPluginInterface
 {
     /**
      * @var \Generated\Shared\Transfer\PaymentMethodTransfer|null

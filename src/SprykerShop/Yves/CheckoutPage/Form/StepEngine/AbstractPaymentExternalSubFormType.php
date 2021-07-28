@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\AbstractSubFormType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-abstract class AbstractExternalPaymentSubFormType extends AbstractSubFormType implements StandaloneSubFormInterface
+abstract class AbstractPaymentExternalSubFormType extends AbstractSubFormType implements StandaloneSubFormInterface
 {
     protected const OPTION_PAYMENT_METHOD_TRANSFER = 'paymentMethodTransfer';
 
