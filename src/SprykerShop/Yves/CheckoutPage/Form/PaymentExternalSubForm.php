@@ -12,8 +12,6 @@ use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 use SprykerShop\Yves\CheckoutPage\Form\StepEngine\AbstractPaymentExternalSubFormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PaymentExternalSubForm extends AbstractPaymentExternalSubFormType
@@ -71,21 +69,6 @@ class PaymentExternalSubForm extends AbstractPaymentExternalSubFormType
         ])->setRequired([
             SubFormInterface::OPTIONS_FIELD_NAME,
         ]);
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormView $view The view
-     * @param \Symfony\Component\Form\FormInterface $form The form
-     * @param array $options The options
-     *
-     * @return void
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
-        parent::buildView($view, $form, $options);
-
-        $formData = $form->getData();
-        $form->setData($formData);
     }
 
     /**
