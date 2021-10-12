@@ -131,7 +131,7 @@ class PaymentForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface[] $paymentMethodSubForms
+     * @param array<\Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface> $paymentMethodSubForms
      * @param array $options
      *
      * @return $this
@@ -172,7 +172,7 @@ class PaymentForm extends AbstractType
     }
 
     /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface[]
+     * @return array<\Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface>
      */
     protected function getPaymentMethodSubForms(): array
     {
@@ -251,7 +251,7 @@ class PaymentForm extends AbstractType
     /**
      * @param \Generated\Shared\Transfer\PaymentMethodsTransfer $availablePaymentMethodsTransfer
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function getAvailablePaymentMethodNames(PaymentMethodsTransfer $availablePaymentMethodsTransfer): array
     {
@@ -264,7 +264,7 @@ class PaymentForm extends AbstractType
     }
 
     /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface[] $paymentMethodSubForms
+     * @param array<\Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface> $paymentMethodSubForms
      *
      * @return array
      */
