@@ -54,6 +54,7 @@ class StepFactory extends AbstractFactory
      * @var int
      */
     protected const ERROR_CODE_GENERAL_FAILURE = 399;
+
     /**
      * @var string
      */
@@ -106,7 +107,7 @@ class StepFactory extends AbstractFactory
             $stepCollection,
             $this->createDataContainer(),
             $this->createStepBreadcrumbGenerator(),
-            $this->getCheckoutPageStepEnginePreRenderPlugins()
+            $this->getCheckoutPageStepEnginePreRenderPlugins(),
         );
     }
 
@@ -117,7 +118,7 @@ class StepFactory extends AbstractFactory
     {
         return new StepCollection(
             $this->getRouter(),
-            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR
+            CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
         );
     }
 
@@ -148,7 +149,7 @@ class StepFactory extends AbstractFactory
             $this->getQuoteClient(),
             $this->getCheckoutStepResolverStrategyPlugins(),
             $this->getSteps(),
-            $this->createStepCollection()
+            $this->createStepCollection(),
         );
     }
 
@@ -159,7 +160,7 @@ class StepFactory extends AbstractFactory
     {
         return new EntryStep(
             static::ROUTE_CART,
-            $this->getConfig()->getEscapeRoute()
+            $this->getConfig()->getEscapeRoute(),
         );
     }
 
@@ -173,7 +174,7 @@ class StepFactory extends AbstractFactory
             $this->getCustomerStepHandler(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_CUSTOMER,
             $this->getConfig()->getEscapeRoute(),
-            $this->getRouter()->generate(static::ROUTE_LOGOUT)
+            $this->getRouter()->generate(static::ROUTE_LOGOUT),
         );
     }
 
@@ -189,7 +190,7 @@ class StepFactory extends AbstractFactory
             $this->getConfig(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ADDRESS,
             $this->getConfig()->getEscapeRoute(),
-            $this->getCheckoutAddressStepEnterPreCheckPlugins()
+            $this->getCheckoutAddressStepEnterPreCheckPlugins(),
         );
     }
 
@@ -205,7 +206,7 @@ class StepFactory extends AbstractFactory
             $this->createGiftCardItemsChecker(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SHIPMENT,
             $this->getConfig()->getEscapeRoute(),
-            $this->getCheckoutShipmentStepEnterPreCheckPlugins()
+            $this->getCheckoutShipmentStepEnterPreCheckPlugins(),
         );
     }
 
@@ -237,7 +238,7 @@ class StepFactory extends AbstractFactory
             $this->getConfig()->getEscapeRoute(),
             $this->getFlashMessenger(),
             $this->getCalculationClient(),
-            $this->getCheckoutPaymentStepEnterPreCheckPlugins()
+            $this->getCheckoutPaymentStepEnterPreCheckPlugins(),
         );
     }
 
@@ -252,7 +253,7 @@ class StepFactory extends AbstractFactory
             $this->getConfig(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUMMARY,
             $this->getConfig()->getEscapeRoute(),
-            $this->getCheckoutClient()
+            $this->getCheckoutClient(),
         );
     }
 
@@ -272,7 +273,7 @@ class StepFactory extends AbstractFactory
                 static::ERROR_CODE_GENERAL_FAILURE => self::ROUTE_CART,
                 'payment failed' => CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_PAYMENT,
                 'shipment failed' => CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SHIPMENT,
-            ]
+            ],
         );
     }
 
@@ -286,7 +287,7 @@ class StepFactory extends AbstractFactory
             $this->getCartClient(),
             $this->getConfig(),
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_SUCCESS,
-            $this->getConfig()->getEscapeRoute()
+            $this->getConfig()->getEscapeRoute(),
         );
     }
 
@@ -297,7 +298,7 @@ class StepFactory extends AbstractFactory
     {
         return new ErrorStep(
             CheckoutPageRouteProviderPlugin::ROUTE_NAME_CHECKOUT_ERROR,
-            $this->getConfig()->getEscapeRoute()
+            $this->getConfig()->getEscapeRoute(),
         );
     }
 
@@ -457,7 +458,7 @@ class StepFactory extends AbstractFactory
         return new AddressStepExecutor(
             $this->getCustomerService(),
             $this->getCustomerClient(),
-            $this->getShoppingListItemExpanderPlugins()
+            $this->getShoppingListItemExpanderPlugins(),
         );
     }
 

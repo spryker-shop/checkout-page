@@ -39,7 +39,7 @@ class CheckoutPageFactory extends AbstractFactory
     public function createCheckoutProcess()
     {
         return $this->createStepFactory()->createStepEngine(
-            $this->createStepFactory()->createStepResolver()->resolveSteps()
+            $this->createStepFactory()->createStepResolver()->resolveSteps(),
         );
     }
 
@@ -122,7 +122,7 @@ class CheckoutPageFactory extends AbstractFactory
             $this->getMoneyPlugin(),
             $this->getShipmentService(),
             $this->getConfig(),
-            $this->getProductBundleClient()
+            $this->getProductBundleClient(),
         );
     }
 
@@ -205,7 +205,7 @@ class CheckoutPageFactory extends AbstractFactory
     {
         return new SubFormFilter(
             $this->getSubFormFilterPlugins(),
-            $this->getQuoteClient()
+            $this->getQuoteClient(),
         );
     }
 

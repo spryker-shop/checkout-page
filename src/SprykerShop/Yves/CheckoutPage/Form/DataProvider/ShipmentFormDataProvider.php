@@ -36,6 +36,7 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
      * @var int
      */
     protected const ONE_DAY = 1;
+
     /**
      * @var int
      */
@@ -165,7 +166,7 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
         foreach ($shipmentGroupTransfers as $shipmentGroupTransfer) {
             $cartItems = $this->productBundleClient->getGroupedBundleItems(
                 $shipmentGroupTransfer->getItems(),
-                $quoteTransfer->getBundleItems()
+                $quoteTransfer->getBundleItems(),
             );
 
             $shipmentGroupTransfer->setCartItems($cartItems);
@@ -214,7 +215,7 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
             $addressTransfer->getAddress1(),
             $addressTransfer->getAddress2(),
             $addressTransfer->getZipCode(),
-            $addressTransfer->getCity()
+            $addressTransfer->getCity(),
         );
     }
 
@@ -284,7 +285,7 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
         foreach ($shipmentGroupCollection as $shipmentGroupTransfer) {
             $shipmentMethodsTransfer = $this->findAvailableShipmentMethodsByShipmentGroup(
                 $shipmentMethodsTransferCollection,
-                $shipmentGroupTransfer
+                $shipmentGroupTransfer,
             );
             if ($shipmentMethodsTransfer === null) {
                 continue;
@@ -372,7 +373,7 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
                 $shipmentDescription,
                 $this->translate('page.checkout.shipping.delivery_time'),
                 $deliveryTime,
-                $this->getTranslatedDayName($deliveryTime)
+                $this->getTranslatedDayName($deliveryTime),
             );
         }
 

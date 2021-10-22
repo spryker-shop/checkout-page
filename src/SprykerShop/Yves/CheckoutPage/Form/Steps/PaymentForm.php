@@ -123,7 +123,7 @@ class PaymentForm extends AbstractType
                 'constraints' => [
                     $this->createNotBlankConstraint(),
                 ],
-            ]
+            ],
         );
 
         return $this;
