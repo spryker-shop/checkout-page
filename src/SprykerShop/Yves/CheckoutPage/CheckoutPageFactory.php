@@ -11,6 +11,7 @@ use Spryker\Yves\Kernel\AbstractFactory;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface;
@@ -118,7 +119,7 @@ class CheckoutPageFactory extends AbstractFactory
         return new ShipmentFormDataProvider(
             $this->getShipmentClient(),
             $this->getGlossaryStorageClient(),
-            $this->getStore(),
+            $this->getLocaleClient(),
             $this->getMoneyPlugin(),
             $this->getShipmentService(),
             $this->getConfig(),
@@ -164,14 +165,6 @@ class CheckoutPageFactory extends AbstractFactory
     public function getMoneyPlugin()
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_MONEY);
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    public function getStore()
-    {
-        return $this->getProvidedDependency(CheckoutPageDependencyProvider::STORE);
     }
 
     /**
@@ -231,5 +224,13 @@ class CheckoutPageFactory extends AbstractFactory
     protected function getSubFormFilterPlugins(): array
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_SUB_FORM_FILTERS);
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface
+     */
+    public function getLocaleClient(): CheckoutPageToLocaleClientInterface
+    {
+        return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);
     }
 }

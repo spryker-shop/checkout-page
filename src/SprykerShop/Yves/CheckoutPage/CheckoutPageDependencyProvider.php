@@ -8,7 +8,6 @@
 namespace SprykerShop\Yves\CheckoutPage;
 
 use Spryker\Shared\Kernel\ContainerInterface;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
@@ -40,6 +39,9 @@ use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CheckoutAddressFormDataPro
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
 use SprykerShop\Yves\MoneyWidget\Plugin\MoneyPlugin;
 
+/**
+ * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ */
 class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**
@@ -100,11 +102,6 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @var string
      */
-    public const STORE = 'STORE';
-
-    /**
-     * @var string
-     */
     public const SERVICE_UTIL_VALIDATE = 'SERVICE_UTIL_VALIDATE';
 
     /**
@@ -119,18 +116,21 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
 
     /**
      * @uses \Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin::SERVICE_FLASH_MESSENGER
+     *
      * @var string
      */
     public const SERVICE_FLASH_MESSENGER = 'flash_messenger';
 
     /**
      * @uses \Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin::SERVICE_ROUTER
+     *
      * @var string
      */
     public const SERVICE_ROUTER = 'routers';
 
     /**
      * @deprecated Will be removed without replacement.
+     *
      * @var string
      */
     public const PLUGIN_APPLICATION = 'PLUGIN_APPLICATION';
@@ -272,7 +272,6 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addFlashMessenger($container);
         $container = $this->addRouter($container);
         $container = $this->addApplication($container);
-        $container = $this->provideStore($container);
         $container = $this->addUtilValidateService($container);
 
         $container = $this->addSubFormPluginCollection($container);
@@ -318,20 +317,6 @@ class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::SERVICE_UTIL_VALIDATE, function (Container $container) {
             return new CheckoutPageToUtilValidateServiceBridge($container->getLocator()->utilValidate()->service());
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    protected function provideStore(Container $container): Container
-    {
-        $container->set(static::STORE, function () {
-            return Store::getInstance();
         });
 
         return $container;
