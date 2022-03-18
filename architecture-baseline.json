@@ -56,6 +56,20 @@
         "priority": "2"
     },
     {
+        "fileName": "src/SprykerShop/Yves/CheckoutPage/Dependency/Client/CheckoutPageToGlossaryStorageClientBridge.php",
+        "description": "Bridges: Type should be defined for param `id` in method `SprykerShop\\Yves\\CheckoutPage\\Dependency\\Client\\CheckoutPageToGlossaryStorageClientBridge::translate()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerShop/Yves/CheckoutPage/Dependency/Client/CheckoutPageToGlossaryStorageClientBridge.php",
+        "description": "Bridges: Type should be defined for param `localeName` in method `SprykerShop\\Yves\\CheckoutPage\\Dependency\\Client\\CheckoutPageToGlossaryStorageClientBridge::translate()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
         "fileName": "src/SprykerShop/Yves/CheckoutPage/Dependency/Client/CheckoutPageToGlossaryStorageClientInterface.php",
         "description": "Bridges: The bridge interface has incorrect method signature for `translate()`. Missed return type. That violates the rule \"All bridge interface methods must have exactly the same or more strict signature as their parent\"",
         "rule": "BridgeMethodsInterfaceRule",
@@ -105,10 +119,31 @@
         "priority": "2"
     },
     {
+        "fileName": "src/SprykerShop/Yves/CheckoutPage/Dependency/Service/CheckoutPageToUtilValidateServiceBridge.php",
+        "description": "Bridges: Type should be defined for param `email` in method `SprykerShop\\Yves\\CheckoutPage\\Dependency\\Service\\CheckoutPageToUtilValidateServiceBridge::isEmailFormatValid()`.",
+        "rule": "BridgeMethodsRule",
+        "ruleset": "Spryker",
+        "priority": "2"
+    },
+    {
         "fileName": "src/SprykerShop/Yves/CheckoutPage/Dependency/Service/CheckoutPageToUtilValidateServiceInterface.php",
         "description": "Bridges: The bridge interface has incorrect method signature for `isEmailFormatValid()`. Missed return type. That violates the rule \"All bridge interface methods must have exactly the same or more strict signature as their parent\"",
         "rule": "BridgeMethodsInterfaceRule",
         "ruleset": "Spryker",
         "priority": "2"
+    },
+    {
+        "fileName": "src/SprykerShop/Yves/CheckoutPage/Form/Steps/PaymentForm.php",
+        "description": "Method `SprykerShop\\Yves\\CheckoutPage\\Form\\Steps\\PaymentForm::getBlockPrefix()` must have return type.",
+        "rule": "ExternalMethodExtensionReturnTypeRule",
+        "ruleset": "Spryker",
+        "priority": "1"
+    },
+    {
+        "fileName": "src/SprykerShop/Yves/CheckoutPage/Form/Steps/SummaryForm.php",
+        "description": "Method `SprykerShop\\Yves\\CheckoutPage\\Form\\Steps\\SummaryForm::getBlockPrefix()` must have return type.",
+        "rule": "ExternalMethodExtensionReturnTypeRule",
+        "ruleset": "Spryker",
+        "priority": "1"
     }
 ]
