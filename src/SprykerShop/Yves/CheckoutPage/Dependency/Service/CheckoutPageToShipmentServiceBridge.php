@@ -35,11 +35,6 @@ class CheckoutPageToShipmentServiceBridge implements CheckoutPageToShipmentServi
         return $this->shipmentService->groupItemsByShipment($itemTransferCollection);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentTransfer $shipmentTransfer
-     *
-     * @return string
-     */
     public function getShipmentHashKey(ShipmentTransfer $shipmentTransfer): string
     {
         return $this->shipmentService->getShipmentHashKey($shipmentTransfer);

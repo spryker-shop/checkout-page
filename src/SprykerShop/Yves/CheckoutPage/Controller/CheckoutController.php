@@ -294,9 +294,6 @@ class CheckoutController extends AbstractController
         return $this->view($response, [], '@CheckoutPage/views/order-fail/order-fail.twig');
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteValidationResponseTransfer
-     */
     protected function canProceedCheckout(): QuoteValidationResponseTransfer
     {
         $quoteTransfer = $this->getFactory()

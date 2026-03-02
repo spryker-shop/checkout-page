@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PaymentForeignHandlerPluginTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testAddToDataClassReturnsCorrectQuoteTransferWhenRequestIsCorrect(): void
     {
         // Arrange

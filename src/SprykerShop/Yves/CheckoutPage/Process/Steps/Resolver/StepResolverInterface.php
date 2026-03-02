@@ -11,8 +11,5 @@ use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
 
 interface StepResolverInterface
 {
-    /**
-     * @return \Spryker\Yves\StepEngine\Process\StepCollectionInterface
-     */
     public function resolveSteps(): StepCollectionInterface;
 }

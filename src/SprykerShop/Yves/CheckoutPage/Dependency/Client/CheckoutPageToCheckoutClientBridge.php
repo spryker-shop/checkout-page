@@ -26,11 +26,6 @@ class CheckoutPageToCheckoutClientBridge implements CheckoutPageToCheckoutClient
         $this->checkoutClient = $checkoutClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CheckoutResponseTransfer
-     */
     public function isPlaceableOrder(QuoteTransfer $quoteTransfer): CheckoutResponseTransfer
     {
         return $this->checkoutClient->isPlaceableOrder($quoteTransfer);
@@ -46,11 +41,6 @@ class CheckoutPageToCheckoutClientBridge implements CheckoutPageToCheckoutClient
         return $this->checkoutClient->placeOrder($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteValidationResponseTransfer
-     */
     public function isQuoteApplicableForCheckout(QuoteTransfer $quoteTransfer): QuoteValidationResponseTransfer
     {
         return $this->checkoutClient->isQuoteApplicableForCheckout($quoteTransfer);

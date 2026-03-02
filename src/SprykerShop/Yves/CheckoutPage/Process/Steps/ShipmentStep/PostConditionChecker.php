@@ -26,29 +26,16 @@ class PostConditionChecker implements PostConditionCheckerInterface
      */
     protected $shipmentService;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface $shipmentService
-     */
     public function __construct(CheckoutPageToShipmentServiceInterface $shipmentService)
     {
         $this->shipmentService = $shipmentService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function check(QuoteTransfer $quoteTransfer): bool
     {
         return $this->isShipmentSet($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isShipmentSet(QuoteTransfer $quoteTransfer): bool
     {
         if ($this->hasItemsWithEmptyShipment($quoteTransfer)) {
@@ -69,11 +56,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasItemsWithEmptyShipment(QuoteTransfer $quoteTransfer): bool
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
@@ -85,12 +67,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ShipmentGroupTransfer $shipmentGroupTransfer
-     *
-     * @return bool
-     */
     protected function checkShipmentExpenseSetInQuote(QuoteTransfer $quoteTransfer, ShipmentGroupTransfer $shipmentGroupTransfer): bool
     {
         $shipmentTransfer = $shipmentGroupTransfer->getShipment();
@@ -108,11 +84,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasOnlyGiftCardItems(QuoteTransfer $quoteTransfer): bool
     {
         $onlyGiftCardItems = true;
@@ -125,12 +96,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return (bool)$onlyGiftCardItems;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer
-     * @param string $itemShipmentKey
-     *
-     * @return bool
-     */
     protected function checkShipmentExpenseKey(ExpenseTransfer $expenseTransfer, string $itemShipmentKey): bool
     {
         return $expenseTransfer->getType() === CheckoutPageConfig::SHIPMENT_EXPENSE_TYPE

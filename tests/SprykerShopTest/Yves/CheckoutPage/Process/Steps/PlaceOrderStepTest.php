@@ -52,9 +52,6 @@ class PlaceOrderStepTest extends Unit
      */
     protected CheckoutPageTester $tester;
 
-    /**
-     * @return void
-     */
     public function testPostConditionReturnsFalseIfCheckoutNotConfirmed(): void
     {
         // Arrange
@@ -82,9 +79,6 @@ class PlaceOrderStepTest extends Unit
         $this->tester->assertFalse($result);
     }
 
-    /**
-     * @return void
-     */
     public function tesPostConditionReturnsTrueIfCheckoutError(): void
     {
         // Arrange

@@ -25,29 +25,16 @@ class CheckoutPageToShipmentClientBridge implements CheckoutPageToShipmentClient
         $this->shipmentClient = $shipmentClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShipmentMethodsCollectionTransfer
-     */
     public function getAvailableMethodsByShipment(QuoteTransfer $quoteTransfer): ShipmentMethodsCollectionTransfer
     {
         return $this->shipmentClient->getAvailableMethodsByShipment($quoteTransfer);
     }
 
-    /**
-     * @return bool
-     */
     public function isMultiShipmentSelectionEnabled(): bool
     {
         return $this->shipmentClient->isMultiShipmentSelectionEnabled();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function expandQuoteWithShipmentGroups(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         return $this->shipmentClient->expandQuoteWithShipmentGroups($quoteTransfer);

@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\PaymentTransfer;
 
 interface PaymentMethodKeyExtractorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     *
-     * @return string
-     */
     public function getPaymentSelectionKey(PaymentTransfer $paymentTransfer): string;
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     *
-     * @return string
-     */
     public function getPaymentMethodKey(PaymentTransfer $paymentTransfer): string;
 }

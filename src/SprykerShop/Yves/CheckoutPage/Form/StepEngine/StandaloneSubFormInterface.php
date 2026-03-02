@@ -11,13 +11,7 @@ use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 
 interface StandaloneSubFormInterface extends SubFormInterface
 {
-    /**
-     * @return string
-     */
     public function getLabelName(): string;
 
-    /**
-     * @return string
-     */
     public function getGroupName(): string;
 }

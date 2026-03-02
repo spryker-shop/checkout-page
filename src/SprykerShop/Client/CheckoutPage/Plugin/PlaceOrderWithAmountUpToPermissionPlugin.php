@@ -47,9 +47,6 @@ class PlaceOrderWithAmountUpToPermissionPlugin implements ExecutablePermissionPl
         return true;
     }
 
-    /**
-     * @return array
-     */
     public function getConfigurationSignature(): array
     {
         return [
@@ -57,9 +54,6 @@ class PlaceOrderWithAmountUpToPermissionPlugin implements ExecutablePermissionPl
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return static::KEY;

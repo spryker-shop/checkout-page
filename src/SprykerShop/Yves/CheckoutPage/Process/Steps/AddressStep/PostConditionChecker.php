@@ -19,19 +19,11 @@ class PostConditionChecker implements PostConditionCheckerInterface
      */
     protected $customerService;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface $customerService
-     */
     public function __construct(CheckoutPageToCustomerServiceInterface $customerService)
     {
         $this->customerService = $customerService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function check(QuoteTransfer $quoteTransfer): bool
     {
         if ($this->hasItemsWithEmptyShippingAddresses($quoteTransfer)) {
@@ -54,11 +46,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasItemsWithEmptyShippingAddresses(QuoteTransfer $quoteTransfer): bool
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
@@ -73,11 +60,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasMultipleShippingAddresses(QuoteTransfer $quoteTransfer): bool
     {
         if ($quoteTransfer->getItems()->count() <= 1) {
@@ -98,22 +80,12 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isBillingAddressEmpty(QuoteTransfer $quoteTransfer): bool
     {
         return $quoteTransfer->getBillingSameAsShipping() !== true
             && $this->isAddressEmpty($quoteTransfer->getBillingAddress());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer|null $addressTransfer
-     *
-     * @return bool
-     */
     public function isAddressEmpty(?AddressTransfer $addressTransfer = null): bool
     {
         if ($addressTransfer === null) {
@@ -126,11 +98,6 @@ class PostConditionChecker implements PostConditionCheckerInterface
         return !$firstName && !$lastName;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteLevelShippingAddressEmpty(QuoteTransfer $quoteTransfer): bool
     {
         return $quoteTransfer->getItems()->count() === 0

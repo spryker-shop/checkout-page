@@ -12,9 +12,6 @@ use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
 
 interface ExtraOptionsSubFormInterface extends SubFormInterface
 {
-    /**
-     * @return array
-     */
     public function getExtraOptions(): array;
 
     /**

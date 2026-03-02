@@ -175,19 +175,11 @@ class AddressStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return static::STEP_CODE;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     protected function executeCheckoutAddressStepPostExecutePlugins(QuoteTransfer $quoteTransfer): QuoteResponseTransfer
     {
         $quoteResponseTransfer = (new QuoteResponseTransfer())

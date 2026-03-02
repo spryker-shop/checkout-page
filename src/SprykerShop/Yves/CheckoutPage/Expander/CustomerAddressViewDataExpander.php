@@ -21,9 +21,6 @@ class CustomerAddressViewDataExpander implements AddressViewDataExpanderInterfac
      */
     protected CheckoutPageToCustomerClientInterface $customerClient;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface $customerClient
-     */
     public function __construct(CheckoutPageToCustomerClientInterface $customerClient)
     {
         $this->customerClient = $customerClient;

@@ -94,11 +94,6 @@ class CustomerAddressViewDataExpanderTest extends Unit
         return $customerClientMock;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Expander\AddressViewDataExpanderInterface
-     */
     protected function createCustomerAddressViewDataExpander(?CustomerTransfer $customerTransfer = null): AddressViewDataExpanderInterface
     {
         return new CustomerAddressViewDataExpander(

@@ -61,9 +61,6 @@ class CheckoutPageFactory extends AbstractFactory
         return new FormFactory();
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Reader\PaymentMethodReaderInterface
-     */
     public function createPaymentMethodReader(): PaymentMethodReaderInterface
     {
         return new PaymentMethodReader(
@@ -73,9 +70,6 @@ class CheckoutPageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Extractor\PaymentMethodKeyExtractorInterface
-     */
     public function createPaymentMethodKeyExtractor(): PaymentMethodKeyExtractorInterface
     {
         return new PaymentMethodKeyExtractor();
@@ -89,9 +83,6 @@ class CheckoutPageFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_CUSTOMER_PAGE_WIDGETS);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface
-     */
     public function getCheckoutClient(): CheckoutPageToCheckoutClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CHECKOUT);
@@ -121,33 +112,21 @@ class CheckoutPageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface
-     */
     public function getShipmentClient(): CheckoutPageToShipmentClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_SHIPMENT);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface
-     */
     public function getGlossaryStorageClient(): CheckoutPageToGlossaryStorageClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_GLOSSARY_STORAGE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface
-     */
     public function getProductBundleClient(): CheckoutPageToProductBundleClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_PRODUCT_BUNDLE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface
-     */
     public function getQuoteClient(): CheckoutPageToQuoteClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_QUOTE);
@@ -161,9 +140,6 @@ class CheckoutPageFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_MONEY);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
-     */
     public function getShipmentService(): CheckoutPageToShipmentServiceInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_SHIPMENT);
@@ -177,17 +153,11 @@ class CheckoutPageFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PAYMENT_SUB_FORMS);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface
-     */
     public function getPaymentClient(): CheckoutPageToPaymentClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_PAYMENT);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Form\Filter\SubFormFilterInterface
-     */
     public function createSubFormFilter(): SubFormFilterInterface
     {
         return new SubFormFilter(
@@ -206,9 +176,6 @@ class CheckoutPageFactory extends AbstractFactory
         ];
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Expander\AddressViewDataExpanderInterface
-     */
     public function createCustomerAddressViewDataExpander(): AddressViewDataExpanderInterface
     {
         return new CustomerAddressViewDataExpander(
@@ -232,25 +199,16 @@ class CheckoutPageFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_SUB_FORM_FILTERS);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface
-     */
     public function getCustomerClient(): CheckoutPageToCustomerClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCartClientInterface
-     */
     public function getCartClient(): CheckoutPageToCartClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CART);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface
-     */
     public function getLocaleClient(): CheckoutPageToLocaleClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);

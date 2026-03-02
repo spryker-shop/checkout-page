@@ -44,9 +44,6 @@ class ShipmentCollectionForm extends AbstractType
      */
     protected const FIELD_SHIPMENT_GROUP_COLLECTION = 'shipmentGroups';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return static::BLOCK_PREFIX;
@@ -88,11 +85,6 @@ class ShipmentCollectionForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

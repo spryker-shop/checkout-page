@@ -58,12 +58,6 @@ class AddressStepExecutor implements StepExecutorInterface
         $this->addressTransferExpanderPlugins = $addressTransferExpanderPlugins;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function execute(Request $request, QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $customerTransfer = $this->getCustomerTransfer();
@@ -76,12 +70,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function hydrateItemLevelShippingAddresses(
         QuoteTransfer $quoteTransfer,
         ?CustomerTransfer $customerTransfer
@@ -104,12 +92,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $this->setDefaultShippingAddress($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function hydrateBundleItemLevelShippingAddresses(
         QuoteTransfer $quoteTransfer,
         ?CustomerTransfer $customerTransfer
@@ -126,11 +108,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function setDefaultShippingAddress(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         /** @var \Generated\Shared\Transfer\ItemTransfer|null $itemTransfer */
@@ -149,12 +126,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function hydrateBillingAddress(
         QuoteTransfer $quoteTransfer,
         ?CustomerTransfer $customerTransfer
@@ -166,12 +137,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $this->hydrateBillingAddressWithQuoteLevelData($quoteTransfer, $customerTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function hydrateBillingAddressSameAsShipping(
         QuoteTransfer $quoteTransfer,
         ?CustomerTransfer $customerTransfer
@@ -195,12 +160,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function hydrateBillingAddressWithQuoteLevelData(
         QuoteTransfer $quoteTransfer,
         ?CustomerTransfer $customerTransfer
@@ -216,12 +175,6 @@ class AddressStepExecutor implements StepExecutorInterface
         return $quoteTransfer->setBillingAddress($billingAddressTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentTransfer $shipmentTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShipmentTransfer
-     */
     protected function getShipmentWithUniqueShippingAddress(
         ShipmentTransfer $shipmentTransfer,
         ?CustomerTransfer $customerTransfer
@@ -240,19 +193,11 @@ class AddressStepExecutor implements StepExecutorInterface
         return $shipmentTransfer;
     }
 
-    /**
-     * @return bool
-     */
     protected function hasQuoteMultiShippingAddresses(): bool
     {
         return count($this->createdShipmentsWithShippingAddressesList) > 1;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer|null $addressTransfer
-     *
-     * @return \Generated\Shared\Transfer\AddressTransfer|null
-     */
     protected function copyShippingAddress(?AddressTransfer $addressTransfer): ?AddressTransfer
     {
         if ($addressTransfer === null) {
@@ -262,20 +207,11 @@ class AddressStepExecutor implements StepExecutorInterface
         return (clone $addressTransfer);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer|null
-     */
     protected function getCustomerTransfer(): ?CustomerTransfer
     {
         return $this->customerClient->getCustomer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\AddressTransfer
-     */
     protected function expandAddressTransfer(
         AddressTransfer $addressTransfer,
         ?CustomerTransfer $customerTransfer

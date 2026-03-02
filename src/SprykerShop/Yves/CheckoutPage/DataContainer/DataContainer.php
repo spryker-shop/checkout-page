@@ -23,9 +23,6 @@ class DataContainer implements DataContainerInterface
      */
     protected $quoteTransfer;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface $quoteClient
-     */
     public function __construct(CheckoutPageToQuoteClientInterface $quoteClient)
     {
         $this->quoteClient = $quoteClient;

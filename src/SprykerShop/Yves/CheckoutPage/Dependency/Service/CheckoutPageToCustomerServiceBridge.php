@@ -24,11 +24,6 @@ class CheckoutPageToCustomerServiceBridge implements CheckoutPageToCustomerServi
         $this->customerService = $customerService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return string
-     */
     public function getUniqueAddressKey(AddressTransfer $addressTransfer): string
     {
         return $this->customerService->getUniqueAddressKey($addressTransfer);

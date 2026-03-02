@@ -179,9 +179,6 @@ class SummaryStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return $shipmentGroupTransfers;
     }
 
-    /**
-     * @return string
-     */
     public function getBreadcrumbItemTitle(): string
     {
         return 'checkout.step.summary.title';
@@ -207,12 +204,6 @@ class SummaryStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return !$this->requireInput($quoteTransfer);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function markCheckoutConfirmed(Request $request, QuoteTransfer $quoteTransfer): void
     {
         if (!$request->isMethod(Request::METHOD_POST)) {
@@ -255,11 +246,6 @@ class SummaryStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return $this->getTotalCosts($shipmentGroups);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function haveItemsShipmentTransfers(QuoteTransfer $quoteTransfer): bool
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {

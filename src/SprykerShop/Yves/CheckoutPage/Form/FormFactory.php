@@ -81,9 +81,6 @@ class FormFactory extends AbstractFactory
         return ShipmentForm::class;
     }
 
-    /**
-     * @return string
-     */
     public function getShipmentCollectionForm(): string
     {
         return ShipmentCollectionForm::class;
@@ -126,9 +123,6 @@ class FormFactory extends AbstractFactory
         return $this->createFormCollection($this->getSummaryFormTypes(), $this->createSummaryFormDataProvider());
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
-     */
     public function createSummaryFormDataProvider(): StepEngineFormDataProviderInterface
     {
         return new SummaryFormDataProvider(
@@ -212,41 +206,26 @@ class FormFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_APPLICATION);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface
-     */
     public function getCustomerClient(): CheckoutPageToCustomerClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface
-     */
     public function getLocaleClient(): CheckoutPageToLocaleClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface
-     */
     public function getGlossaryStorageClient(): CheckoutPageToGlossaryStorageClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_GLOSSARY_STORAGE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToUtilValidateServiceInterface
-     */
     public function getUtilValidateService(): CheckoutPageToUtilValidateServiceInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_UTIL_VALIDATE);
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
-     */
     public function getCheckoutAddressFormDataProviderPlugin(): StepEngineFormDataProviderInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_CHECKOUT_ADDRESS_FORM_DATA_PROVIDER);

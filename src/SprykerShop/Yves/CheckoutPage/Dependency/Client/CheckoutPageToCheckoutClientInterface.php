@@ -13,11 +13,6 @@ use Generated\Shared\Transfer\QuoteValidationResponseTransfer;
 
 interface CheckoutPageToCheckoutClientInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CheckoutResponseTransfer
-     */
     public function isPlaceableOrder(QuoteTransfer $quoteTransfer): CheckoutResponseTransfer;
 
     /**
@@ -27,10 +22,5 @@ interface CheckoutPageToCheckoutClientInterface
      */
     public function placeOrder(QuoteTransfer $quoteTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteValidationResponseTransfer
-     */
     public function isQuoteApplicableForCheckout(QuoteTransfer $quoteTransfer): QuoteValidationResponseTransfer;
 }

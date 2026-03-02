@@ -12,11 +12,5 @@ use Symfony\Component\HttpFoundation\Request;
 
 interface StepExecutorInterface
 {
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function execute(Request $request, QuoteTransfer $quoteTransfer): QuoteTransfer;
 }

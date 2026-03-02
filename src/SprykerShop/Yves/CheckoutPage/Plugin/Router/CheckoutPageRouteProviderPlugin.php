@@ -145,11 +145,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addCheckoutIndexRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout', 'CheckoutPage', 'Checkout', 'indexAction');
@@ -159,11 +154,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addCustomerStepRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/customer', 'CheckoutPage', 'Checkout', 'customerAction');
@@ -173,11 +163,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addAddressStepRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/address', 'CheckoutPage', 'Checkout', 'addressAction');
@@ -187,11 +172,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addShipmentStepRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/shipment', 'CheckoutPage', 'Checkout', 'shipmentAction');
@@ -201,11 +181,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addPaymentStepRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/payment', 'CheckoutPage', 'Checkout', 'paymentAction');
@@ -215,11 +190,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addCheckoutSummaryStepRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/summary', 'CheckoutPage', 'Checkout', 'summaryAction');
@@ -229,11 +199,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addPlaceOrderStepRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/place-order', 'CheckoutPage', 'Checkout', 'placeOrderAction');
@@ -243,11 +208,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addCheckoutErrorRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/error', 'CheckoutPage', 'Checkout', 'errorAction');
@@ -257,11 +217,6 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
         return $routeCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
-     */
     protected function addCheckoutSuccessRoute(RouteCollection $routeCollection): RouteCollection
     {
         $route = $this->buildRoute('/checkout/success', 'CheckoutPage', 'Checkout', 'successAction');

@@ -44,9 +44,6 @@ class ShipmentGroupForm extends AbstractType
      */
     protected $shipmentGroupTransfer;
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return static::BLOCK_PREFIX;
@@ -130,11 +127,6 @@ class ShipmentGroupForm extends AbstractType
         return $shipmentGroupCollection[$shipmentGroupIndex];
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return string|null
-     */
     protected function findShipmentGroupIndex(FormBuilderInterface $builder): ?string
     {
         $propertyPath = $builder->getPropertyPath();
@@ -145,11 +137,6 @@ class ShipmentGroupForm extends AbstractType
         return $propertyPath->getElement(0);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentGroupTransfer $shipmentGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShipmentGroupTransfer
-     */
     protected function mapSubmittedShipmentSubFormDataToItemLevelShipments(
         ShipmentGroupTransfer $shipmentGroupTransfer
     ): ShipmentGroupTransfer {
@@ -165,11 +152,6 @@ class ShipmentGroupForm extends AbstractType
         return $shipmentGroupTransfer;
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

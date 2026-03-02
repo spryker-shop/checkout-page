@@ -226,12 +226,6 @@ class PlaceOrderStep extends AbstractBaseStep implements StepWithExternalRedirec
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function setQuoteErrorMessages(CheckoutResponseTransfer $checkoutResponseTransfer, QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         foreach ($checkoutResponseTransfer->getErrors() as $checkoutErrorTransfer) {
@@ -242,11 +236,6 @@ class PlaceOrderStep extends AbstractBaseStep implements StepWithExternalRedirec
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CheckoutErrorTransfer $checkoutErrorTransfer
-     *
-     * @return string
-     */
     protected function translateCheckoutErrorMessage(CheckoutErrorTransfer $checkoutErrorTransfer): string
     {
         $checkoutErrorMessage = $checkoutErrorTransfer->getMessage();

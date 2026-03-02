@@ -19,10 +19,5 @@ interface CheckoutPageToShipmentServiceInterface
      */
     public function groupItemsByShipment(iterable $itemTransferCollection): ArrayObject;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentTransfer $shipmentTransfer
-     *
-     * @return string
-     */
     public function getShipmentHashKey(ShipmentTransfer $shipmentTransfer): string;
 }

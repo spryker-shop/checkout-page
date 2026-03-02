@@ -82,15 +82,6 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
      */
     protected $localeClient;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface $shipmentClient
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface $glossaryStorageClient
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface $localeClient
-     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface $moneyPlugin
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface $shipmentService
-     * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface $productBundleClient
-     */
     public function __construct(
         CheckoutPageToShipmentClientInterface $shipmentClient,
         CheckoutPageToGlossaryStorageClientInterface $glossaryStorageClient,
@@ -200,11 +191,6 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
         return $shippingAddressLabelList;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return string
-     */
     protected function getShippingAddressLabel(AddressTransfer $addressTransfer): string
     {
         return sprintf(
@@ -307,12 +293,6 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
         return $shipmentMethods;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentMethodsCollectionTransfer $shipmentMethodsCollectionTransfer
-     * @param \Generated\Shared\Transfer\ShipmentGroupTransfer $shipmentGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShipmentMethodsTransfer|null
-     */
     protected function findAvailableShipmentMethodsByShipmentGroup(
         ShipmentMethodsCollectionTransfer $shipmentMethodsCollectionTransfer,
         ShipmentGroupTransfer $shipmentGroupTransfer
@@ -327,11 +307,6 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShipmentMethodsCollectionTransfer
-     */
     protected function getAvailableShipmentMethodsByShipment(QuoteTransfer $quoteTransfer): ShipmentMethodsCollectionTransfer
     {
         if ($this->availableShipmentMethods === null) {
@@ -431,11 +406,6 @@ class ShipmentFormDataProvider implements StepEngineFormDataProviderInterface
         return $this->glossaryStorageClient->translate($translationKey, $this->localeClient->getCurrentLocale());
     }
 
-    /**
-     * @param int $deliveryTime
-     *
-     * @return string
-     */
     protected function getTranslatedDayName(int $deliveryTime): string
     {
         if ($deliveryTime === static::ONE_DAY) {

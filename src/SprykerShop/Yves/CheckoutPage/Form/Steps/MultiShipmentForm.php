@@ -57,9 +57,6 @@ class MultiShipmentForm extends AbstractType
      */
     protected const FIELD_REQUESTED_DELIVERY_DATE_FORMAT = 'yyyy-MM-dd'; // Format accepted by IntlDateFormatter.
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return static::BLOCK_PREFIX;
@@ -125,17 +122,11 @@ class MultiShipmentForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\NotBlank
-     */
     protected function createNotBlankConstraint(): NotBlank
     {
         return new NotBlank(['message' => static::VALIDATION_NOT_BLANK_MESSAGE]);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\DateTime
-     */
     protected function createDateTimeConstraint(): ConstraintDateTime
     {
         return new ConstraintDateTime([
@@ -144,21 +135,11 @@ class MultiShipmentForm extends AbstractType
         ]);
     }
 
-    /**
-     * @param string $minDate
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Form\Validator\Constraints\GreaterThanOrEqualDate
-     */
     protected function createDateTimeGreaterThanOrEqualConstraint(string $minDate): GreaterThanOrEqualDate
     {
         return new GreaterThanOrEqualDate($minDate);
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

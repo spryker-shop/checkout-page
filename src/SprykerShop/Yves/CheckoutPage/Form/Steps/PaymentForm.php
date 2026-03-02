@@ -202,12 +202,6 @@ class PaymentForm extends AbstractType
         return $paymentMethodSubForms;
     }
 
-    /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection $paymentSubFormPluginCollection
-     * @param \Generated\Shared\Transfer\PaymentMethodsTransfer $paymentMethodsTransfer
-     *
-     * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection
-     */
     protected function extendPaymentCollection(
         SubFormPluginCollection $paymentSubFormPluginCollection,
         PaymentMethodsTransfer $paymentMethodsTransfer
@@ -224,12 +218,6 @@ class PaymentForm extends AbstractType
         return $paymentSubFormPluginCollection;
     }
 
-    /**
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection $paymentMethodSubFormPlugins
-     * @param \Generated\Shared\Transfer\PaymentMethodsTransfer $availablePaymentMethodsTransfer
-     *
-     * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection
-     */
     protected function filterOutNotAvailableForms(
         SubFormPluginCollection $paymentMethodSubFormPlugins,
         PaymentMethodsTransfer $availablePaymentMethodsTransfer
@@ -291,11 +279,6 @@ class PaymentForm extends AbstractType
         return $paymentMethodSubForm->createSubForm();
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -331,9 +314,6 @@ class PaymentForm extends AbstractType
             ->filterFormsCollection($availablePaymentMethodSubFormPlugins);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\NotBlank
-     */
     protected function createNotBlankConstraint(): NotBlank
     {
         return new NotBlank(['message' => static::VALIDATION_NOT_BLANK_MESSAGE]);

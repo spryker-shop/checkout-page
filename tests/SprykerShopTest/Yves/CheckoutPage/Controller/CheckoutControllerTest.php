@@ -51,9 +51,6 @@ class CheckoutControllerTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -61,9 +58,6 @@ class CheckoutControllerTest extends Unit
         $this->controller = $this->createCheckoutControllerMock();
     }
 
-    /**
-     * @return void
-     */
     public function testPlaceOrderActionExecutesCheckoutPlaceOrderStep(): void
     {
         // Arrange

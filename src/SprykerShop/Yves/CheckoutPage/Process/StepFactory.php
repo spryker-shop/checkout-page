@@ -93,17 +93,11 @@ class StepFactory extends AbstractFactory
         return new DataContainer($this->getQuoteClient());
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface
-     */
     public function getQuoteClient(): CheckoutPageToQuoteClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_QUOTE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Extractor\PaymentMethodKeyExtractorInterface
-     */
     public function createPaymentMethodKeyExtractor(): PaymentMethodKeyExtractorInterface
     {
         return new PaymentMethodKeyExtractor();
@@ -153,9 +147,6 @@ class StepFactory extends AbstractFactory
         ];
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\Resolver\StepResolverInterface
-     */
     public function createStepResolver(): StepResolverInterface
     {
         return new StepResolver(
@@ -191,9 +182,6 @@ class StepFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep
-     */
     public function createAddressStep(): AddressStep
     {
         return new AddressStep(
@@ -224,9 +212,6 @@ class StepFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface
-     */
     public function getProductBundleClient(): CheckoutPageToProductBundleClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_PRODUCT_BUNDLE);
@@ -308,9 +293,6 @@ class StepFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Step\StepInterface
-     */
     public function createErrorStep(): StepInterface
     {
         return new ErrorStep(
@@ -319,9 +301,6 @@ class StepFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface
-     */
     public function createGiftCardItemsChecker(): GiftCardItemsCheckerInterface
     {
         return new GiftCardItemsChecker();
@@ -371,25 +350,16 @@ class StepFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGIN_APPLICATION);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
-     */
     public function getCalculationClient(): CheckoutPageToCalculationClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CALCULATION);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface
-     */
     public function getCheckoutClient(): CheckoutPageToCheckoutClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CHECKOUT);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCartClientInterface
-     */
     public function getCartClient(): CheckoutPageToCartClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CART);
@@ -403,25 +373,16 @@ class StepFactory extends AbstractFactory
         return new StepBreadcrumbGenerator();
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface
-     */
     public function getCustomerClient(): CheckoutPageToCustomerClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface
-     */
     public function getGlossaryStorageClient(): CheckoutPageToGlossaryStorageClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_GLOSSARY_STORAGE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface
-     */
     public function getPaymentClient(): CheckoutPageToPaymentClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_PAYMENT);
@@ -475,9 +436,6 @@ class StepFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGINS_CHECKOUT_STEP_RESOLVER_STRATEGY);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface
-     */
     public function createAddressStepExecutor(): StepExecutorInterface
     {
         return new AddressStepExecutor(
@@ -487,33 +445,21 @@ class StepFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
-     */
     public function createAddressStepPostConditionChecker(): PostConditionCheckerInterface
     {
         return new AddressStepPostConditionChecker($this->getCustomerService());
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
-     */
     public function createShipmentStepPostConditionChecker(): PostConditionCheckerInterface
     {
         return new ShipmentStepPostConditionChecker($this->getShipmentService());
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
-     */
     public function getShipmentService(): CheckoutPageToShipmentServiceInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_SHIPMENT);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface
-     */
     public function getCustomerService(): CheckoutPageToCustomerServiceInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::SERVICE_CUSTOMER);
@@ -535,9 +481,6 @@ class StepFactory extends AbstractFactory
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::PLUGINS_CHECKOUT_PAGE_STEP_ENGINE_PRE_RENDER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface
-     */
     public function getLocaleClient(): CheckoutPageToLocaleClientInterface
     {
         return $this->getProvidedDependency(CheckoutPageDependencyProvider::CLIENT_LOCALE);

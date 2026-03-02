@@ -11,8 +11,5 @@ use Generated\Shared\Transfer\PaymentMethodsTransfer;
 
 interface PaymentMethodReaderInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\PaymentMethodsTransfer
-     */
     public function getAvailablePaymentMethods(): PaymentMethodsTransfer;
 }

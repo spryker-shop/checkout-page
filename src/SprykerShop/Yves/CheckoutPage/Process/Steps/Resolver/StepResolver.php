@@ -50,9 +50,6 @@ class StepResolver implements StepResolverInterface
         $this->stepCollection = $stepCollection;
     }
 
-    /**
-     * @return \Spryker\Yves\StepEngine\Process\StepCollectionInterface
-     */
     public function resolveSteps(): StepCollectionInterface
     {
         $steps = $this->executeCheckoutStepResolverStrategyPlugins($this->steps);

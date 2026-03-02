@@ -29,11 +29,6 @@ class PaymentMethodReader implements PaymentMethodReaderInterface
      */
     protected CheckoutPageConfig $config;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface $paymentClient
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToQuoteClientInterface $quoteClient
-     * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $config
-     */
     public function __construct(
         CheckoutPageToPaymentClientInterface $paymentClient,
         CheckoutPageToQuoteClientInterface $quoteClient,
@@ -44,9 +39,6 @@ class PaymentMethodReader implements PaymentMethodReaderInterface
         $this->config = $config;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PaymentMethodsTransfer
-     */
     public function getAvailablePaymentMethods(): PaymentMethodsTransfer
     {
         $quoteTransfer = $this->quoteClient->getQuote();
@@ -55,11 +47,6 @@ class PaymentMethodReader implements PaymentMethodReaderInterface
         return $this->filterExcludedPaymentMethods($paymentMethodsTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodsTransfer $paymentMethodsTransfer
-     *
-     * @return \Generated\Shared\Transfer\PaymentMethodsTransfer
-     */
     protected function filterExcludedPaymentMethods(
         PaymentMethodsTransfer $paymentMethodsTransfer
     ): PaymentMethodsTransfer {

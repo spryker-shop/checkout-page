@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\PaymentTransfer;
 
 class PaymentMethodKeyExtractor implements PaymentMethodKeyExtractorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     *
-     * @return string
-     */
     public function getPaymentSelectionKey(PaymentTransfer $paymentTransfer): string
     {
         preg_match('/^([\w]+)/', $paymentTransfer->getPaymentSelectionOrFail(), $matches);
@@ -27,11 +22,6 @@ class PaymentMethodKeyExtractor implements PaymentMethodKeyExtractorInterface
         return $paymentTransfer->getPaymentSelectionOrFail();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     *
-     * @return string
-     */
     public function getPaymentMethodKey(PaymentTransfer $paymentTransfer): string
     {
         preg_match('/\[([a-zA-Z0-9_-]+)\]/', $paymentTransfer->getPaymentSelectionOrFail(), $matches);

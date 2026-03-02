@@ -118,11 +118,6 @@ class ShipmentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfa
         return $this->postConditionChecker->check($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function setDefaultNoShipmentMethod(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $quoteTransfer = $this->setDefaultShipmentSelectionForItems($quoteTransfer);
@@ -138,11 +133,6 @@ class ShipmentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfa
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function setDefaultShipmentSelectionForItems(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
@@ -156,11 +146,6 @@ class ShipmentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfa
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function setDefaultShipmentSelectionForBundleItems(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         foreach ($quoteTransfer->getBundleItems() as $itemTransfer) {
@@ -218,9 +203,6 @@ class ShipmentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfa
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return static::STEP_CODE;

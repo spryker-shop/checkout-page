@@ -53,11 +53,6 @@ class SummaryForm extends AbstractType
         return 'summaryForm';
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_ACCEPT_TERM_AND_CONDITIONS_LABEL);

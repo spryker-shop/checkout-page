@@ -131,11 +131,6 @@ class PaymentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return $quoteTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return string|null
-     */
     protected function getPaymentSelectionWithFallback(QuoteTransfer $quoteTransfer): ?string
     {
         if ($quoteTransfer->getTotals() && $quoteTransfer->getTotals()->getPriceToPay() === 0) {
@@ -215,12 +210,6 @@ class PaymentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PaymentMethodsTransfer $paymentMethodsTransfer
-     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     *
-     * @return bool
-     */
     protected function containsPayment(PaymentMethodsTransfer $paymentMethodsTransfer, PaymentTransfer $paymentTransfer): bool
     {
         foreach ($paymentMethodsTransfer->getMethods() as $paymentMethodTransfer) {
@@ -276,9 +265,6 @@ class PaymentStep extends AbstractBaseStep implements StepWithBreadcrumbInterfac
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return static::STEP_CODE;

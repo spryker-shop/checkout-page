@@ -36,11 +36,6 @@ class SummaryFormDataProvider implements StepEngineFormDataProviderInterface
      */
     protected $glossaryStorageClient;
 
-    /**
-     * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToLocaleClientInterface $localeClient
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface $glossaryStorageClient
-     */
     public function __construct(
         CheckoutPageConfig $checkoutPageConfig,
         CheckoutPageToLocaleClientInterface $localeClient,

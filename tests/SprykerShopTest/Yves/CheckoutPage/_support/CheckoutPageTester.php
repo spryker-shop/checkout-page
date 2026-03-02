@@ -41,9 +41,6 @@ class CheckoutPageTester extends Actor
      */
     protected const SHIPMENT_EXPENSE_TYPE = 'SHIPMENT_EXPENSE_TYPE';
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function createQuoteTransferWithMultiShipment(): QuoteTransfer
     {
         $quoteTransfer = (new QuoteBuilder([
