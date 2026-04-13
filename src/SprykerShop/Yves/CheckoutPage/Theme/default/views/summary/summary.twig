@@ -255,6 +255,7 @@
                 {% endif %}
             {% endif %}
             <div class="box">
+                {% widget 'CostCenterSelectorWidget' args [data.cart] only %}{% endwidget %}
                 {% widget 'QuoteApprovalWidget' args [data.cart] only %}{% endwidget %}
             </div>
 
