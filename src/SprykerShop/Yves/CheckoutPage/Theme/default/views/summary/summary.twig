@@ -162,8 +162,11 @@
                         {% endif %}
                     </div>
                 {% endif %}
+
+                               
             </div>
         {% endfor %}
+        {% widget 'RecurringOrderSelectorWidget' args [data.cart] only %}{% endwidget %}
     </div>
 
     {% embed molecule('order-custom-reference', 'OrderCustomReferenceWidget') ignore missing with {
