@@ -25,10 +25,10 @@ class PlaceOrderWithAmountUpToPermissionPlugin implements ExecutablePermissionPl
     protected const FIELD_CENT_AMOUNT = 'cent_amount';
 
     /**
+     * {@inheritDoc}
+     *
      * @param array<string, mixed> $configuration
      * @param array|string|int|null $context Cent amount.
-     *
-     * @return bool
      */
     public function can(array $configuration, $context = null): bool
     {
@@ -47,6 +47,11 @@ class PlaceOrderWithAmountUpToPermissionPlugin implements ExecutablePermissionPl
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
     public function getConfigurationSignature(): array
     {
         return [
@@ -54,6 +59,11 @@ class PlaceOrderWithAmountUpToPermissionPlugin implements ExecutablePermissionPl
         ];
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
     public function getKey(): string
     {
         return static::KEY;

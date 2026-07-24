@@ -32,8 +32,7 @@ class PaymentForeignHandlerPlugin extends AbstractPlugin implements StepHandlerP
     protected const FIELD_PAYMENT_PROVIDER_NAME = 'paymentProviderName';
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * {@inheritDoc}
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */

@@ -17,7 +17,7 @@ use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 class ShipmentFormDataProviderPlugin extends AbstractPlugin implements StepEngineFormDataProviderInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * {@inheritDoc}
      *
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
@@ -27,7 +27,7 @@ class ShipmentFormDataProviderPlugin extends AbstractPlugin implements StepEngin
     }
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * {@inheritDoc}
      *
      * @return array<string, mixed>
      */

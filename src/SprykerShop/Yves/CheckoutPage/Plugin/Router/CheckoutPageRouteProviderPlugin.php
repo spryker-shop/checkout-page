@@ -121,14 +121,10 @@ class CheckoutPageRouteProviderPlugin extends AbstractRouteProviderPlugin
     public const ROUTE_NAME_CHECKOUT_INDEX = 'checkout-index';
 
     /**
-     * Specification:
+     * {@inheritDoc}
      * - Adds Routes to the RouteCollection.
      *
      * @api
-     *
-     * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
-     *
-     * @return \Spryker\Yves\Router\Route\RouteCollection
      */
     public function addRoutes(RouteCollection $routeCollection): RouteCollection
     {

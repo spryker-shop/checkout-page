@@ -18,8 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ShipmentHandlerPlugin extends AbstractPlugin implements StepHandlerPluginInterface
 {
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * {@inheritDoc}
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
