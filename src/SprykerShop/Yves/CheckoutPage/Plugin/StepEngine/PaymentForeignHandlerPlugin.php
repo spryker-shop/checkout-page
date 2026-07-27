@@ -34,6 +34,8 @@ class PaymentForeignHandlerPlugin extends AbstractPlugin implements StepHandlerP
     /**
      * {@inheritDoc}
      *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function addToDataClass(Request $request, AbstractTransfer $quoteTransfer)

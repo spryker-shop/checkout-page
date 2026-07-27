@@ -19,6 +19,8 @@ class ShipmentFormDataProviderPlugin extends AbstractPlugin implements StepEngin
     /**
      * {@inheritDoc}
      *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
     public function getData(AbstractTransfer $quoteTransfer)
@@ -28,6 +30,8 @@ class ShipmentFormDataProviderPlugin extends AbstractPlugin implements StepEngin
 
     /**
      * {@inheritDoc}
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return array<string, mixed>
      */

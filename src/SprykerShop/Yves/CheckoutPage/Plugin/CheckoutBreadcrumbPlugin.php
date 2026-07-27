@@ -19,6 +19,8 @@ class CheckoutBreadcrumbPlugin extends AbstractPlugin
     /**
      * {@inheritDoc}
      *
+     * @param \Generated\Shared\Transfer\QuoteTransfer|null $dataTransfer
+     *
      * @return \Generated\Shared\Transfer\StepBreadcrumbsTransfer
      */
     public function generateStepBreadcrumbs(?AbstractTransfer $dataTransfer = null)
