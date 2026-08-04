@@ -7,8 +7,6 @@ export default class IsNextCheckoutStepEnabled extends Component {
     protected target: ValidateNextCheckoutStep;
     protected extraTarget: ValidateNextCheckoutStep;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         if (this.triggerSelector) {
             this.trigger = <HTMLSelectElement>document.querySelector(this.triggerSelector);

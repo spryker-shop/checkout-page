@@ -213,7 +213,7 @@
                         component: molecule('toggler-checkbox'),
                         componentClass: embed.jsAddressClass ~ '__sub-form-trigger',
                         attributes: {
-                            'target-selector': '.' ~ billingClassName,
+                            'target-class-name': billingClassName,
                             'class-to-toggle': hiddenClassName,
                             'add-class-when-checked': true,
                             'checked': not isMultipleShipmentSelected ? embed.isBillingSameAsShippingChecked : false,

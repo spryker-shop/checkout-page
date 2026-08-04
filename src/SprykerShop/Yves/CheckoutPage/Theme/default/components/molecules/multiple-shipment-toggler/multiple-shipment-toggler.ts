@@ -7,8 +7,6 @@ export default class MultipleShipmentToggler extends Component {
     protected targets: HTMLElement[];
     protected prevShipmentValue: string;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.singleShipmentTrigger = <HTMLButtonElement>(
             this.getElementsByClassName(`${this.jsName}__single-shipment-trigger`)[0]

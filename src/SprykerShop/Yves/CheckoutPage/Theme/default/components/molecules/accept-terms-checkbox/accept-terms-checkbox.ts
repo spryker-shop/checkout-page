@@ -4,8 +4,6 @@ export default class AcceptTermsCheckbox extends Component {
     protected trigger: HTMLInputElement;
     protected target: HTMLButtonElement;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.trigger = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__trigger`)[0];
         this.target = <HTMLButtonElement>document.getElementsByClassName(this.targetClassName)[0];

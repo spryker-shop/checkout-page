@@ -20,8 +20,6 @@ export default class ValidateNextCheckoutStep extends Component {
     protected extraTriggerChangeHandler: () => void;
     protected triggerInputHandler: () => void;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.target = <HTMLButtonElement>document.querySelector(this.targetSelector);
 
