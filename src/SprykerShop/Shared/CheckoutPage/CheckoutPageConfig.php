@@ -7,9 +7,9 @@
 
 namespace SprykerShop\Shared\CheckoutPage;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class CheckoutPageConfig extends AbstractBundleConfig
+class CheckoutPageConfig extends AbstractSharedConfig
 {
     /**
      * Specification:
