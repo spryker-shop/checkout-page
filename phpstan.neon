@@ -1,5 +1,6 @@
 parameters:
     ignoreErrors:
+        - '#PHPDoc tag @SuppressWarnings has invalid value#'
         -
             identifier: missingType.iterableValue
     level: 7

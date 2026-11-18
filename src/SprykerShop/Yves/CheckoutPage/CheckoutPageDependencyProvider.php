@@ -40,6 +40,7 @@ use SprykerShop\Yves\MoneyWidget\Plugin\MoneyPlugin;
 
 /**
  * @method \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class CheckoutPageDependencyProvider extends AbstractBundleDependencyProvider
 {
