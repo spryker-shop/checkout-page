@@ -25,3 +25,95 @@
 {% endblock %}
 
 {% block footer %}{% endblock %}
+
+{% block eventTracker %}
+    {# A page built on the checkout layout that names its own page type, e.g. the order confirmation, is no checkout step and reports no checkout data. #}
+    {% set isCheckoutStep = (events.data.page ?? null) is null %}
+    {% set isUserActionTrackingEnabled = findWidget('TraceableEventWidget').parameters.isUserActionTrackingEnabled ?? false %}
+    {% set checkoutQuote = isUserActionTrackingEnabled and isCheckoutStep ? _view.quote ?? null : null %}
+
+    {# The cart being checked out, as the traceable events report it on every checkout step, e.g. GA4 begin_checkout: a product bundle counts as one product,
+       so the products inside it are left out; the price in cents, per unit after discounts and as the shopper sees it, with tax in gross mode
+       (the order confirmation reports it without tax, as tax is sent on its own there). #}
+    {% set canSeePrices = can('SeePricePermissionPlugin') %}
+    {% set checkoutProducts = [] %}
+    {% set checkoutItems = checkoutQuote ? checkoutQuote.items | default([]) | filter(item => item.relatedBundleItemIdentifier is empty) | merge(checkoutQuote.bundleItems | default([])) : [] %}
+    {% for item in checkoutItems %}
+        {% set checkoutProducts = checkoutProducts | merge([{
+            sku: item.sku,
+            abstractSku: item.abstractSku | default(null),
+            name: item.name,
+            abstractName: item.abstractName | default(null),
+            brand: item.brand | default(null),
+            variant: item.selectedVariantAttributes | default([]) | reduce((values, value) => values | merge([value]), []),
+            categories: item.categoryPath | default([]) | map(categoryName => { name: categoryName }),
+            price: canSeePrices ? item.unitPriceToPayAggregation : null,
+            quantity: item.quantity,
+        }]) %}
+    {% endfor %}
+    {% set checkoutVoucherCodes = checkoutQuote ? checkoutQuote.voucherDiscounts | default([]) | map(discount => discount.voucherCode) | filter(voucherCode => voucherCode is not empty) : [] %}
+
+    {# The shipment methods chosen for the cart, by the name the shopper sees, each once: a split delivery has one per shipment. #}
+    {% set checkoutShipmentMethodNames = [] %}
+    {% for item in checkoutQuote.items ?? [] %}
+        {% set shipmentMethodName = item.shipment.method.name ?? null %}
+        {% set translatedShipmentMethodName = shipmentMethodName ? shipmentMethodName | trans : null %}
+        {% if translatedShipmentMethodName and translatedShipmentMethodName not in checkoutShipmentMethodNames %}
+            {% set checkoutShipmentMethodNames = checkoutShipmentMethodNames | merge([translatedShipmentMethodName]) %}
+        {% endif %}
+    {% endfor %}
+
+    {# The payment methods chosen for the cart, by the name the shopper sees, each once: a split payment, e.g. with a gift card, has several.
+       The payment step labels a method with its translated payment selection, e.g. "Invoice" for `dummyPaymentInvoice`; the payment method itself
+       is an internal name, e.g. `invoice`, used only for a payment without a selection. Never the payment details. #}
+    {% set checkoutPayments = checkoutQuote and checkoutQuote.payments | default([]) | length ? checkoutQuote.payments : [checkoutQuote.payment ?? null] %}
+    {% set checkoutPaymentMethodNames = [] %}
+    {% for payment in checkoutPayments %}
+        {% set paymentMethodName = payment.paymentSelection ?? payment.paymentMethod ?? null %}
+        {% set translatedPaymentMethodName = paymentMethodName ? paymentMethodName | trans : null %}
+        {% if translatedPaymentMethodName and translatedPaymentMethodName not in checkoutPaymentMethodNames %}
+            {% set checkoutPaymentMethodNames = checkoutPaymentMethodNames | merge([translatedPaymentMethodName]) %}
+        {% endif %}
+    {% endfor %}
+
+    {# The steps that report their own accepted submit, e.g. GA4 add_shipping_info: the same step shown after a submit means the shop did not accept it. #}
+    {% set checkoutStepsByRoute = {
+        'checkout-shipment': 'SHIPMENT',
+        'checkout-payment': 'PAYMENT',
+    } %}
+    {% set checkoutStep = checkoutStepsByRoute[app.request.attributes.get('_route')] ?? null %}
+
+    {# The submitted forms are the triggers, so an Enter-key submission counts as well. #}
+    {% set events = {
+        list: events.list | merge([
+            {
+                event: 'SHIPMENT_SUBMIT',
+                name: 'submit',
+                triggers: [
+                    {
+                        selector: 'form[name="shipmentCollectionForm"]',
+                    },
+                ],
+            },
+            {
+                event: 'PAYMENT_SUBMIT',
+                name: 'submit',
+                triggers: [
+                    {
+                        selector: 'form[name="paymentForm"]',
+                    },
+                ],
+            },
+        ]),
+        data: events.data | merge({
+            page: events.data.page ?? 'CHECKOUT',
+            checkoutProducts: checkoutProducts,
+            checkoutCoupon: checkoutVoucherCodes | join(','),
+            checkoutShippingTier: checkoutShipmentMethodNames | join(', '),
+            checkoutPaymentType: checkoutPaymentMethodNames | join(', '),
+            checkoutStep: checkoutStep,
+        }),
+    } %}
+
+    {{ parent() }}
+{% endblock %}

@@ -21,6 +21,7 @@
         <property name="acceptTermsAndConditions" type="bool"/>
         <property name="isOrderPlacedSuccessfully" type="bool"/>
         <property name="errors" type="Error[]" singular="error"/>
+        <property name="voucherDiscounts" type="Discount[]" singular="voucherDiscount"/>
     </transfer>
 
     <transfer name="Error">
@@ -92,6 +93,7 @@
         <property name="grandTotal" type="int"/>
         <property name="priceToPay" type="int"/>
         <property name="shipmentTotal" type="int"/>
+        <property name="taxTotal" type="TaxTotal"/>
     </transfer>
 
     <transfer name="Customer">
@@ -156,6 +158,17 @@
         <property name="abstractSku" type="string"/>
         <property name="name" type="string"/>
         <property name="sumSubtotalAggregation" type="int"/>
+        <property name="abstractName" type="string" description="The name of the abstract product."/>
+        <property name="brand" type="string" description="Brand of the product: its brand attribute in the order of the product storage, concrete localized over concrete over abstract localized over abstract, the localized ones in the current locale; set when the cart items are expanded."/>
+        <property name="selectedVariantAttributes" type="array" singular="selectedVariantAttribute" description="The super attributes of the concrete product, attribute key to value, ordered by attribute key as strings, e.g. {&quot;color&quot;: &quot;Red&quot;, &quot;storage_capacity&quot;: &quot;64 GB&quot;}; set when the item is added to the cart, and from the order item's super attributes when an order is read."/>
+        <property name="categoryPath" type="string[]" singular="categoryName" description="The category names of the product, top level first, without the root category: set when the item is added to the cart, in the locale of that moment, and read from storage when the order details page shows an order item."/>
+        <property name="relatedBundleItemIdentifier" type="string" description="The identifier for a bundle item that this item is related to."/>
+        <property name="unitPrice" type="int"/>
+        <property name="unitPriceToPayAggregation" type="int"/>
+        <property name="unitTaxAmountFullAggregation" type="int"/>
+        <property name="bundleItemIdentifier" type="string"/>
+        <property name="sumPriceToPayAggregation" type="int"/>
+        <property name="sumTaxAmountFullAggregation" type="int"/>
     </transfer>
 
     <transfer name="Expense">
@@ -196,6 +209,14 @@
 
     <transfer name="Addresses">
         <property name="addresses" type="Address[]" singular="address"/>
+    </transfer>
+
+    <transfer name="Discount">
+        <property name="voucherCode" type="string"/>
+    </transfer>
+
+    <transfer name="TaxTotal">
+        <property name="amount" type="int"/>
     </transfer>
 
 </transfers>

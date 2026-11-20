@@ -35,6 +35,11 @@ class CheckoutController extends AbstractController
     protected const ROUTE_CART = 'cart';
 
     /**
+     * @var string
+     */
+    protected const VIEW_DATA_KEY_QUOTE = 'quote';
+
+    /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|array
@@ -81,7 +86,7 @@ class CheckoutController extends AbstractController
         }
 
         return $this->view(
-            $response,
+            $this->addQuoteToViewData($response),
             $this->getFactory()->getCustomerPageWidgetPlugins(),
             '@CheckoutPage/views/login/login.twig',
         );
@@ -114,7 +119,7 @@ class CheckoutController extends AbstractController
         }
 
         return $this->view(
-            $this->executeAddressViewDataExpanders($viewData),
+            $this->addQuoteToViewData($this->executeAddressViewDataExpanders($viewData)),
             $this->getFactory()->getCustomerPageWidgetPlugins(),
             '@CheckoutPage/views/address/address.twig',
         );
@@ -147,7 +152,7 @@ class CheckoutController extends AbstractController
         }
 
         return $this->view(
-            $response,
+            $this->addQuoteToViewData($response),
             $this->getFactory()->getCustomerPageWidgetPlugins(),
             '@CheckoutPage/views/shipment/shipment.twig',
         );
@@ -180,7 +185,7 @@ class CheckoutController extends AbstractController
         }
 
         return $this->view(
-            $response,
+            $this->addQuoteToViewData($response),
             $this->getFactory()->getCustomerPageWidgetPlugins(),
             '@CheckoutPage/views/payment/payment.twig',
         );
@@ -213,7 +218,7 @@ class CheckoutController extends AbstractController
         }
 
         return $this->view(
-            $viewData,
+            $this->addQuoteToViewData($viewData),
             $this->getFactory()->getSummaryPageWidgetPlugins(),
             '@CheckoutPage/views/summary/summary.twig',
         );
@@ -252,6 +257,20 @@ class CheckoutController extends AbstractController
     }
 
     /**
+     * The cart being checked out, for the traceable events of the checkout steps, e.g. GA4 begin_checkout.
+     *
+     * @param array<string, mixed> $viewData
+     *
+     * @return array<string, mixed>
+     */
+    protected function addQuoteToViewData(array $viewData): array
+    {
+        $viewData[static::VIEW_DATA_KEY_QUOTE] = $this->getFactory()->getQuoteClient()->getQuote();
+
+        return $viewData;
+    }
+
+    /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Spryker\Yves\Kernel\View\View
@@ -265,7 +284,7 @@ class CheckoutController extends AbstractController
             return $response;
         }
 
-        $response['quote'] = $quoteTransfer;
+        $response[static::VIEW_DATA_KEY_QUOTE] = $quoteTransfer;
 
         return $this->view(
             $response,

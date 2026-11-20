@@ -58,6 +58,7 @@
         "spryker-shop/sales-order-amendment-widget": "Add the module if you want to use UpdateOrderCheckoutSubmitButtonTextWidget or UpdateOrderCheckoutSuccessTitleWidget.",
         "spryker-shop/service-point-widget": "Add the module if you want to use service point widget",
         "spryker-shop/shipment-type-widget": "Add the module if you want to use ShipmentTypeAddressFormWidget.",
+        "spryker-shop/traceable-event-widget": "^1.5.0: If you want the checkout reported to the traceable events, e.g. as CHECKOUT_START, SHIPMENT_SUBMIT, PAYMENT_SUBMIT and the placed order on the order confirmation page.",
         "spryker/router": "Use this module when you want to use the Router.",
         "spryker/shipment-cart-connector": "If you want to use shipment totals in quote or shipment source prices, min version 2.1.0",
         "spryker/silex": "Use this module when using plugins that need Silex dependencies."
